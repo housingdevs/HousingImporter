@@ -1,0 +1,58 @@
+[
+    {
+        "type": "CHANGE_STAT",
+        "stat": "deaths",
+        "mode": "INCREMENT",
+        "amount": 10
+    },
+    {
+        "type":"PLAY_SOUND",
+        "sound":"AMBIENCE_CAVE",
+        "volume": 0.7,
+        "pitch": 1,
+        "location": {
+            "relZ": 0,
+            "relY": 0,
+            "relX": 0,
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "pitch": 0,
+            "yaw": 0
+        }
+    },
+    {
+        "type":"GIVE_ITEM",
+        "item": null,
+        "allow_multiple": true,
+        "inventory_slot": -1,
+        "replace_existing_item": true
+    },
+    {
+        "type":"CONDITIONAL", 
+        "conditions": [
+            {
+                "type":"IN_GROUP",
+                "required_group": "Owner",
+                "include_higher_groups": true
+            }
+        ],
+        "match_any_condition": true,
+        "if_actions": [
+            {
+                "type":"SEND_MESSAGE",
+                "message":"Hello!"
+            },
+            {
+                "type":"SEND_MESSAGE",
+                "message":"Hello!"
+            }
+        ],
+        "else_actions": [
+            {
+                "type":"SEND_MESSAGE",
+                "message":"Hello!"
+            }
+        ] 
+    }
+]
