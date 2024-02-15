@@ -343,6 +343,125 @@ const conditions = {
             default_value: null,
             type: "anvil_input"
         }
+    },
+    PVP_ENABLED: {
+        condition_name: "Pvp Enabled"
+    },
+    FISHING_ENVIRONMENT: {
+        condition_name: "Fishing Environment",
+        environment: {
+            slot: 10,
+            default_value: null,
+            type: "static_option_select",
+            options: [
+                "Water",
+                "Lava"
+            ]
+        }
+    },
+    PORTAL_TYPE: {
+        condition_name: "Portal Type",
+        portal_type: {
+            slot: 10,
+            default_value: "End Portal",
+            type: "static_option_select",
+            options: [
+                "Nether Portal",
+                "End Portal"
+            ]
+        }
+    },
+    DAMAGE_CAUSE: {
+        condition_name: "Damage Cause",
+        cause: {
+            slot: 10,
+            default_value: null,
+            type: "static_option_select",
+            options: [
+                "Entity Attack",
+                "Projectile",
+                "Suffocation",
+                "Fall",
+                "Lava",
+                "Fire",
+                "Fire Tick",
+                "Drowning",
+                "Starvation",
+                "Poison",
+                "Thorns"
+            ]
+        }
+    },
+    DAMAGE_AMOUNT: {
+        condition_name: "Damage Amount",
+        mode: {
+            slot: 10,
+            default_value: "EQUAL",
+            type: "static_option_select",
+            options: [
+                "Less Than",
+                "Less Than or Equal",
+                "Equal",
+                "Greater Than or Equal",
+                "Greater Than"
+            ]
+        }, 
+        amount: {
+            slot: 11,
+            default_value: null,
+            type: "anvil_input"
+        } 
+    },
+    BLOCK_TYPE: {
+        condition_name: "Block Type",
+        item: {
+            slot: 10,
+            default_value: null,
+            type: "item"
+        },
+        match_type_only: {
+            slot: 11,
+            default_value: false,
+            type: "toggle"
+        }
+    },
+    IS_ITEM: {
+        condition_name: "Is Item",
+        item: {
+            slot: 10,
+            default_value: null,
+            type: "item"
+        },
+        what_to_check: {
+            slot: 11,
+            default_value: "Metadata",
+            type: "static_option_select",
+            options: [
+                "Item Type",
+                "Metadata"
+            ]
+        },
+        where_to_check: {
+            slot: 12,
+            default_value: "Anywhere",
+            type: "static_option_select",
+            options: [
+                "Hand",
+                "Armor",
+                "Hotbar",
+                "Inventory",
+                "Anywhere"
+            ]
+        },
+        required_amount: {
+            slot: 13,
+            default_value: "Any",
+            type: "static_option_select",
+            options: [
+                "Any Amount",
+                "Equal or Greater Amount"
+            ]
+        }
     }
 }
 export default conditions;
