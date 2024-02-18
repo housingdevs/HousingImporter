@@ -4,6 +4,17 @@ import conditions from './_conditions.js'
 import SEND_MESSAGE from './send_message.js'
 import PLAY_SOUND from './play_sound.js'
 import GIVE_ITEM from './give_item.js'
+import TITLE from './title.js'
+import EXIT from './exit.js'
+import CHANGE_PLAYER_GROUP from './change_player_group.js'
+import KILL from './kill.js'
+import FULL_HEAL from './full_heal.js'
+import SPAWN from './spawn.js'
+import ACTION_BAR from './action_bar.js'
+import RESET_INVENTORY from './reset_inventory.js'
+import PARKOUR_CHECKPOINT from './parkour_checkpoint.js'
+import REMOVE_ITEM from './remove_item.js'
+import POTION_EFFECT from './potion_effect.js'
 import CLOSE_MENU from './close_menu.js'
 import DISPLAY_MENU from './display_menu.js'
 import CHANGE_TEAM_STAT from './change_team_stat.js'
@@ -30,6 +41,17 @@ export default {
     SEND_MESSAGE,
     PLAY_SOUND,
     GIVE_ITEM,
+    TITLE,
+    EXIT,
+    CHANGE_PLAYER_GROUP,
+    KILL,
+    FULL_HEAL,
+    SPAWN,
+    ACTION_BAR,
+    RESET_INVENTORY,
+    PARKOUR_CHECKPOINT,
+    REMOVE_ITEM,
+    POTION_EFFECT,
     CLOSE_MENU,
     DISPLAY_MENU,
     CHANGE_TEAM_STAT,
