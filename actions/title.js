@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Display Title",
     title: {
         slot: 10,
@@ -26,5 +26,3 @@ const action = {
         type: "anvil_input"
     }
 }
-
-export default action;

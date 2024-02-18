@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Remove Item",
     item: {
         slot: 10,
@@ -6,5 +6,3 @@ const action = {
         type: "item"
     }
 }
-
-export default action;

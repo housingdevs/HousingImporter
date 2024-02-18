@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Change Player's Group",
     group: {
         slot: 10,
@@ -11,5 +11,3 @@ const action = {
         type: "toggle"
     }
 }
-
-export default action;

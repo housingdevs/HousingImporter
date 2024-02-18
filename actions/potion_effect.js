@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Apply Potion Effect",
     effect: {
         slot: 10,
@@ -21,5 +21,3 @@ const action = {
         type: "toggle"
     }
 }
-
-export default action;

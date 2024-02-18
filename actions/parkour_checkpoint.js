@@ -1,5 +1,3 @@
-const action = {
+export default {
     action_name: "Parkour Checkpoint",
 }
-
-export default action;

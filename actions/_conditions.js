@@ -1,4 +1,4 @@
-const conditions = {
+export default {
     IN_GROUP: {
         condition_name: "Required Group",
         required_group: {
@@ -464,4 +464,3 @@ const conditions = {
         }
     }
 }
-export default conditions;

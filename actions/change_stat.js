@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Change Player Stat",
     stat: {
         slot: 10,
@@ -23,5 +23,3 @@ const action = {
         type: "anvil_input"
     }
 }
-
-export default action;

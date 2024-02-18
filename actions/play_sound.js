@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Play Sound",
     sound: {
         slot: 10,
@@ -21,5 +21,3 @@ const action = {
         type: "location",
     }
 }
-
-export default action;

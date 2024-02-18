@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Give Item",
     item: {
         slot: 10,
@@ -21,5 +21,3 @@ const action = {
         type: "toggle",
     }
 }
-
-export default action;

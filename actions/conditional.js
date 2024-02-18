@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Conditional",
     conditions: {
         slot: 10,
@@ -20,6 +20,4 @@ const action = {
         default_value: [],
         type: "subactions"
     }
-};
-
-export default action;
+}

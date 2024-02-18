@@ -1,5 +1,3 @@
-const action = {
+export default {
     action_name: "Go To House Spawn",
 }
-
-export default action;

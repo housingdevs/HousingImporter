@@ -1,5 +1,3 @@
-const action = {
+export default {
     action_name: "Reset Inventory",
 }
-
-export default action;

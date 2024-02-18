@@ -1,4 +1,4 @@
-const action = {
+export default {
     action_name: "Display Action Bar",
     message: {
         slot: 10,
@@ -6,5 +6,3 @@ const action = {
         type: "chat_input"
     }
 }
-
-export default action;
