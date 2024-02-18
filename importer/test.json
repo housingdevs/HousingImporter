@@ -4,93 +4,9 @@
         "contextTarget": {},
         "actions": [
             {
-                "type": "CONDITIONAL",
-                "conditions": [
-                    {
-                        "type": "IN_GROUP",
-                        "required_group": null,
-                        "include_higher_groups": false
-                    },
-                    {
-                        "type": "PLAYER_STAT",
-                        "stat": "Kills",
-                        "mode": "EQUAL",
-                        "amount": 1
-                    },
-                    {
-                        "type": "GLOBAL_STAT",
-                        "stat": "Kills",
-                        "mode": "EQUAL",
-                        "amount": 1
-                    },
-                    {
-                        "type": "HAS_PERMISSION",
-                        "required_permission": null
-                    },
-                    {
-                        "type": "IN_REGION",
-                        "region": null
-                    },
-                    {
-                        "type": "HAS_ITEM",
-                        "item": null,
-                        "what_to_check": "Metadata",
-                        "where_to_check": "Anywhere",
-                        "required_amount": "Any"
-                    },
-                    {
-                        "type": "IN_PARKOUR"
-                    },
-                    {
-                        "type": "POTION_EFFECT",
-                        "effect": null
-                    },
-                    {
-                        "type": "SNEAKING"
-                    },
-                    {
-                        "type": "FLYING"
-                    },
-                    {
-                        "type": "HEALTH",
-                        "mode": "EQUAL",
-                        "amount": null
-                    },
-                    {
-                        "type": "MAX_HEALTH",
-                        "mode": "EQUAL",
-                        "amount": null
-                    },
-                    {
-                        "type": "HUNGER_LEVEL",
-                        "mode": "EQUAL",
-                        "amount": null
-                    },
-                    {
-                        "type": "GAMEMODE",
-                        "required_gamemode": null
-                    },
-                    {
-                        "type": "PLACEHOLDER_NUMBER",
-                        "placeholder": null,
-                        "mode": "EQUAL",
-                        "amount": 1
-                    },
-                    {
-                        "type": "IN_TEAM",
-                        "required_team": "None"
-                    },
-                    {
-                        "type": "TEAM_STAT",
-                        "stat": "Kills",
-                        "team": "None",
-                        "mode": "EQUAL",
-                        "amount": 1
-                    }
-                ],
-                "match_any_condition": false,
-                "if_actions": [],
-                "else_actions": []
+                "type":"ENCHANT_HELD_ITEM",
+                "enchantment": 50,
+                "level": 1
             }
         ]
     },

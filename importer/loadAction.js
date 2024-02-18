@@ -94,6 +94,13 @@ function importComponent(component, menu) {
                 addOperation({ type: 'item', item: component[key] });
                 break;
             // Action exceptions that cannot fit under other options
+            case "enchantment":
+                if (component[key] < 50) addOperation({ type: 'click', slot: component[key] + 10})
+                else {
+                    addOperation({ type: 'click', slot: 53 }); // click next page
+                    addOperation({ type: 'click', slot: component[key] - 40});
+                }
+                break;
             case "sound":
                 addOperation({ type: 'click', slot: 48 }); // click "Custom Sound" Button
                 addOperation({ type: 'chat', text: convertSound(component[key])});
