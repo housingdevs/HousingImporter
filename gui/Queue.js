@@ -41,40 +41,40 @@ register("tick", () => {
     )} seconds`
   );
 
-  let [operationType, operationData] = queue.shift();
-  if (operationType === "setGuiContext") {
-    currentGuiContext = operationData.context; // for error messages
+  let operation = queue.shift();
+  if (operation.type === "setGuiContext") {
+    currentGuiContext = operation.context; // for error messages
     if (queue.length === 0) return;
-    [operationType, operationData] = queue.shift();
+    operation = queue.shift();
   }
   Navigator.goto = false;
-  switch (operationType) {
+  switch (operation.type) {
     case "click":
-      return Navigator.click(operationData.slot);
+      return Navigator.click(operation.slot);
     case "anvil":
-      return Navigator.inputAnvil(operationData.text);
+      return Navigator.inputAnvil(operation.text);
     case "returnToEditActions":
       return Navigator.returnToEditActions();
     case "back":
       return Navigator.goBack();
     case "option":
-      return Navigator.setSelecting(operationData.option);
+      return Navigator.setSelecting(operation.option);
     case "chat":
-      return Navigator.inputChat(operationData.text, operationData.func, operationData.command);
+      return Navigator.inputChat(operation.text, operation.func, operation.command);
     case "item":
-      return Navigator.selectItem(operationData.item);
+      return Navigator.selectItem(operation.item);
     case "closeGui":
       return Client.currentGui.close();
     case "goto":
       Navigator.goto = true;
-      ChatLib.chat(`&3HousingImporter &fPlease open action container &e${operationData.name}`);
+      ChatLib.chat(`&3HousingImporter &fPlease open action container &e${operation.name}`);
       Navigator.isReady = false;
       return;
     case "wait":
       Navigator.isReady = false;
       return setTimeout(() => {
         Navigator.isReady = true;
-      }, operationData.time);
+      }, operation.time);
     case "done":
       return doneLoading();
   }

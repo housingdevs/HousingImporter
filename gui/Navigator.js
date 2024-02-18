@@ -12,11 +12,10 @@ const C0EPacketClickWindow = Java.type(
 const slotIdField =
   C0EPacketClickWindow.class.getDeclaredField("field_149552_b");
 slotIdField.setAccessible(true);
-const lastItemAddedMargin = Settings.guiCooldown; // wait certain amount of ms after the last item in the GUI was added before safely saying that the GUI has loaded.
 
 const arrow = new Image(
   javax.imageio.ImageIO.read(
-    new java.io.File("./config/ChatTriggers/modules/HTSL/assets/red-arrow.png")
+    new java.io.File("./config/ChatTriggers/modules/HousingImporter/assets/red-arrow.png")
   )
 );
 let drawArrow = false;
@@ -73,14 +72,12 @@ register("chat", (event) => {
 register("guiRender", () => {
   if (Navigator.isReady) return;
   if (!Player.getContainer()) return;
-  if (Player.getContainer().getClassName() === "ContainerCreative") return;
-  if (Player.getContainer().getName() === "Housing Menu") return;
+  let container = Player.getContainer();
+  if (container.getClassName() === "ContainerCreative") return;
+  if (container.getName() === "Housing Menu") return;
   if (Navigator.itemsLoaded.lastItemAddedTimestamp === 0) return; // no items loaded yet so wait for items to load
-  if (
-    Date.now() - Navigator.itemsLoaded.lastItemAddedTimestamp <
-    lastItemAddedMargin
-  )
-    return;
+  // console.log(container.getClassName());
+  if (container.getItems().splice(container.getSize() - 44, 9).filter(n => n).length == 0 && container.getClassName() !== "ContainerPlayer") return;
   Navigator.isReady = true;
   Navigator.guiIsLoading = false;
 });
@@ -182,10 +179,6 @@ register("packetReceived", (packet, event) => {
   ) {
     const containerName = Player.getContainer().getName();
     if (containerName !== "Select an Item") return;
-    // let slotField = packet.class.getDeclaredField('field_149177_b');
-    // slotField.setAccessible(true);
-    // let slot = slotField.get(packet);
-    // if (slot === -1)
     Navigator.isLoadingItem = false;
     click(53); // slot that is used to load items
   }

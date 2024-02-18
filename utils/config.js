@@ -39,16 +39,6 @@ class Settings {
 	// MISCELLANEOUS
 
 	@SliderProperty({
-		name: "GUI Cooldown",
-		description: "Amount of cooldown between clicking an item in a GUI.\n\nvalues under 20 will result in more errors.",
-		category: "Miscellaneous",
-		subcategory: "Miscellaneous",
-		min: 10,
-		max: 100
-	})
-	guiCooldown = 100;
-
-	@SliderProperty({
 		name: "GUI Timeout",
 		description: "Amount of ticks after not clicking anything in the GUI before declaring an error and timing out.\n\n&eIf you have lots of lagspikes / slow internet and Importer keeps timing out you should increase this.",
 		category: "Miscellaneous",
