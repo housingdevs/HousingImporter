@@ -28,11 +28,18 @@ import RANDOM_ACTION from './random_action.js'
 import SET_GAMEMODE from './set_gamemode.js.js'
 import SET_COMPASS_TARGET from './set_compass_target.js'
 import BAIL_PARKOUR from './bail_parkour.js'
+import FAIL_PARKOUR from './bail_parkour.js'
 import TELEPORT_PLAYER from './teleport_player.js'
 import CHANGE_GLOBAL_STAT from './change_global_stat.js'
 import SEND_TO_LOBBY from './send_to_lobby.js'
 import GIVE_EXP_LEVELS from './give_exp_levels.js'
 import CLEAR_EFFECTS from './clear_effects.js'
+import SET_MAX_HEALTH from './set_max_health.js'
+import CHANGE_MAX_HEALTH from './set_max_health.js'
+import SET_HEALTH from './set_health.js'
+import CHANGE_HEALTH from './set_health.js'
+import SET_HUNGER_LEVEL from './set_hunger_level.js'
+import CHANGE_HUNGER_LEVEL from './set_hunger_level.js'
 
 export default {
     CHANGE_STAT,
@@ -65,9 +72,16 @@ export default {
     SET_GAMEMODE,
     SET_COMPASS_TARGET,
     BAIL_PARKOUR,
+    FAIL_PARKOUR,
     TELEPORT_PLAYER,
     CHANGE_GLOBAL_STAT,
     SEND_TO_LOBBY,
     GIVE_EXP_LEVELS,
-    CLEAR_EFFECTS
+    CLEAR_EFFECTS,
+    SET_MAX_HEALTH,
+    CHANGE_MAX_HEALTH,
+    SET_HEALTH,
+    CHANGE_HEALTH,
+    SET_HUNGER_LEVEL,
+    CHANGE_HUNGER_LEVEL
 }

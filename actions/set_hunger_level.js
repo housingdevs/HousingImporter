@@ -1,6 +1,6 @@
 export default {
-    action_name: "Change Max Health",
-    max_health: {
+    action_name: "Change Hunger Level",
+    hunger: {
         slot: 10,
         default_value: 20,
         type: "anvil_input"
@@ -16,10 +16,5 @@ export default {
             "Multiply",
             "Divide"
         ]
-    },
-    heal_on_change: {
-        slot: 12,
-        default_value: true,
-        type: "toggle"
     }
 }
