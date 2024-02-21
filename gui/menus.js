@@ -599,7 +599,7 @@ export const menus = {
         action_name: 'Exit'
     },
     CHANGE_PLAYER_GROUP: {
-        action_name: 'Change Player's Group',
+        action_name: 'Change Player\'s Group',
         group: {
             slot: 10,
             default_value: null,
