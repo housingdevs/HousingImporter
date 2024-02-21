@@ -3,9 +3,7 @@ import { addOperation } from '../gui/Queue';
 import convertSound from '../utils/convertSound'
 const conditions = menus.conditions;
 
-export default (/*script*/) => {
-    // temp variable for testing
-    let script = JSON.parse(FileLib.read('HousingImporter', "/importer/test.json"));
+export default (script) => {
     for (let container in script) {
         if (script[container].context != "DEFAULT") {
             addOperation({ type: 'returnToEditActions' });
