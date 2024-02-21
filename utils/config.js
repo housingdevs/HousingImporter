@@ -1,6 +1,7 @@
 // config.js
 import { @Vigilant @SliderProperty @SwitchProperty @NumberProperty @TextProperty @ButtonProperty @SliderProperty @CheckboxProperty } from 'Vigilance';
 
+
 @Vigilant("Importer", `Importer`, {
 	getCategoryComparator: () => (a, b) => {
 		const categories = ["General", "Actions / Items",  "Miscellaneous"];

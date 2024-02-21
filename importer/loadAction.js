@@ -1,4 +1,4 @@
-import menus from '../actions/_import_all';
+import { menus } from '../gui/menus'
 import { addOperation } from '../gui/Queue';
 import convertSound from '../utils/convertSound'
 const conditions = menus.conditions;
