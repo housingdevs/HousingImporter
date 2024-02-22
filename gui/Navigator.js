@@ -1,7 +1,49 @@
-import utilInputAnvil from "../utils/inputAnvil";
-import utilLoadItem from "../utils/loadItemstack";
-import getItemFromNBT from "../utils/getItemFromNBT";
-import Settings from "../utils/config";
+import Settings from "./settings";
+
+const C10PacketCreativeInventoryAction = Java.type("net.minecraft.network.play.client.C10PacketCreativeInventoryAction");
+// https://wiki.vg/Protocol#Creative_Inventory_Action
+
+function loadItem(itemStack, slot) {
+	Client.sendPacket(
+		new C10PacketCreativeInventoryAction(
+			slot, // slot, 36=hotbar slot 1
+			itemStack // item to get as a minecraft item stack object
+		)
+	);
+}
+
+function inputAnvil(input) {
+  if (Client.currentGui.getClassName() === 'GuiRepair') { // check if in anvil gui
+		let outputSlotField = Player.getContainer().container.class.getDeclaredField('field_82852_f');
+		outputSlotField.setAccessible(true);
+		let outputSlot = outputSlotField.get(Player.getContainer().container); // outputSlot is a net.minecraft.inventory.InventoryCraftResult
+
+		let outputSlotItemField = outputSlot.class.getDeclaredField('field_70467_a');
+		outputSlotItemField.setAccessible(true);
+		let outputSlotItem = outputSlotItemField.get(outputSlot); // array with one item, net.minecraft.item.ItemStack
+
+		outputSlotItem[0] = new Item(339).setName(input).itemStack; // set the single item in the array an item with the name of the input
+
+		outputSlotItemField.set(outputSlot, outputSlotItem); // actually set the outputSlot in the anvil to the new item
+
+		Player.getContainer().click(2, false) // click that new item
+	}
+}
+
+function getItemFromNBT(nbtStr) {
+  let nbt = net.minecraft.nbt.JsonToNBT.func_180713_a(nbtStr); // Get MC NBT object from string
+  let count = nbt.func_74771_c('Count') // get byte
+  let id = nbt.func_74779_i('id') // get string
+  let damage = nbt.func_74765_d('Damage') // get short
+  let tag = nbt.func_74781_a('tag') // get tag
+  let item = new Item(id); // create ct item object
+  item.setStackSize(count);
+  item = item.getItemStack(); // convert to mc object
+  item.func_77964_b(damage); // set damage of mc item object
+  if (tag) item.func_77982_d(tag); // set tag of mc item object
+  item = new Item(item); // convert back to ct object
+  return item;
+}
 
 const S2EPacketCloseWindow = Java.type(
   "net.minecraft.network.play.server.S2EPacketCloseWindow"
@@ -147,7 +189,7 @@ function selectItem(item) {
         item.itemData.item.replace(/\\/g, "")
       ).getItemStack();
       Navigator.isLoadingItem = true;
-      utilLoadItem(itemStack, 26);
+      loadItem(itemStack, 26);
       setNotReady();
       break;
     case "clickSlot":
@@ -211,7 +253,7 @@ const goBack = () => click(Player.getContainer().getSize() - 5 - 36); // click t
 
 function inputAnvil(text) {
   slotToClick = 2;
-  utilInputAnvil(text, true);
+  inputAnvil(text, true);
   setNotReady();
 }
 

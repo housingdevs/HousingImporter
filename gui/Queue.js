@@ -1,6 +1,44 @@
 import Navigator from "./Navigator";
-import { Button } from "./GuiBuilder";
-import Settings from "../utils/config";
+import Settings from "./settings";
+
+const GuiButton = net.minecraft.client.gui.GuiButton;
+class Button {
+  constructor(x, y, width, height, text) {
+    this.mcObject = new GuiButton(0, x, y, width, height, text);
+    this.getX = () => { return this.mcObject.field_146128_h }
+    this.getY = () => { return this.mcObject.field_146129_i }
+    this.getWidth = () => { return this.mcObject.field_146120_f }
+    this.getHeight = () => { return this.mcObject.field_146121_g }
+    this.setX = (x) => { this.mcObject.field_146128_h = x }
+    this.setY = (y) => { this.mcObject.field_146129_i = y }
+    this.setWidth = (width) => { this.mcObject.field_146120_f = width }
+    this.setHeight = (height) => { this.mcObject.field_146121_g = height }
+    this.setEnabled = (enabled) => {
+      const isEnabledField = this.mcObject.class.getDeclaredField('field_146124_l');
+      isEnabledField.setAccessible(true);
+      isEnabledField.set(this.mcObject, enabled);
+    }
+    this.getEnabled = () => {
+      const isEnabledField = this.mcObject.class.getDeclaredField('field_146124_l');
+      isEnabledField.setAccessible(true);
+      return isEnabledField.get(this.mcObject);
+    }
+    this.setText = (text) => {
+      const textField = this.mcObject.class.getDeclaredField('field_146126_j');
+      textField.setAccessible(true);
+      textField.set(this.mcObject, text);
+    }
+    this.getText = () => {
+      const textField = this.mcObject.class.getDeclaredField('field_146126_j');
+      textField.setAccessible(true);
+      return textField.get(this.mcObject);
+    }
+    this.render = (x, y) => {
+      this.mcObject.func_146112_a(Client.getMinecraft(), x, y);
+    }
+
+  }
+}
 
 let queue = [];
 let fails = [];
@@ -11,7 +49,7 @@ let currentGuiContext = null;
 register("tick", () => {
   if (queue.length > 0) timeWithoutOperation++;
   if (
-    (timeWithoutOperation > Settings.guiTimeout) & (queue.length > 0) &&
+    (timeWithoutOperation > Settings.timeout) & (queue.length > 0) &&
     !Settings.useSafeMode && !Navigator.goto
   ) {
     fails.push(`&cOperation timed out. &f(too long without GUI click)`);
@@ -85,22 +123,10 @@ function doneLoading() {
   Navigator.isWorking = false;
   queue = [];
   operationTimes = { started: 0, total: 0 };
-  if (Settings.playSoundOnFinish) World.playSound("random.levelup", 2, 1);
-  if (Settings.closeGUI) Client.currentGui.close();
-
   if (fails.length > 0) {
-    ChatLib.chat(
-      `&cFailed to load: &f(${fails.length} error${fails.length > 1 ? "s" : ""
-      })`
-    );
-    fails.forEach((fail) => ChatLib.chat("   > " + fail));
-    fails = [];
-    ChatLib.chat(
-      `&f${queue.length} &coperation${queue.length !== 1 ? "s" : ""
-      } left in queue.`
-    );
+
   } else {
-    ChatLib.chat(`&3HousingImporter &fImported successfully!`);
+    // done
   }
 }
 
