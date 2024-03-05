@@ -1,5 +1,3 @@
-import Settings from "./settings";
-
 const C10PacketCreativeInventoryAction = Java.type("net.minecraft.network.play.client.C10PacketCreativeInventoryAction");
 // https://wiki.vg/Protocol#Creative_Inventory_Action
 
@@ -118,7 +116,6 @@ register("guiRender", () => {
   if (container.getClassName() === "ContainerCreative") return;
   if (container.getName() === "Housing Menu") return;
   if (Navigator.itemsLoaded.lastItemAddedTimestamp === 0) return; // no items loaded yet so wait for items to load
-  // console.log(container.getClassName());
   if (container.getItems().splice(container.getSize() - 44, 9).filter(n => n).length == 0 && container.getClassName() !== "ContainerPlayer") return;
   Navigator.isReady = true;
   Navigator.guiIsLoading = false;
@@ -152,7 +149,7 @@ function setArrowToSlot(slotId) {
 
 function click(slotId) {
   slotToClick = slotId;
-  if (Settings.useSafeMode) {
+  if (useSafeMode) {
     setArrowToSlot(slotId);
   } else {
     Client.sendPacket(
@@ -210,7 +207,7 @@ register("guiKey", (_character, code, _gui, event) => {
 
 register("packetReceived", (packet, event) => {
   if (packet instanceof S2EPacketCloseWindow) {
-    if (Settings.useSafeMode || !Navigator.isWorking) return;
+    if (useSafeMode || !Navigator.isWorking) return;
     cancel(event);
   }
 
@@ -262,7 +259,7 @@ function inputChat(text, func, command) {
   if (func) {
     Navigator.func = func;
   }
-  if (Settings.useSafeMode) Client.Companion.setCurrentChatMessage(text);
+  if (useSafeMode) Client.Companion.setCurrentChatMessage(text);
   else {
     ChatLib.say(`${command? "" : "/ac "}` + text);
   }
@@ -281,7 +278,9 @@ function setNotReady() {
   drawArrow = false;
 }
 
-let Navigator = {
+let useSafeMode;
+
+export default Navigator = {
   isWorking: false,
   isReady: false,
   isSelecting: false,
@@ -290,6 +289,7 @@ let Navigator = {
   guiIsLoading: true,
   goto: false,
   itemsLoaded: { items: {}, lastItemAddedTimestamp: 0 },
+  useSafeMode,
   selectOption,
   selectItem,
   setSelecting,
@@ -299,5 +299,3 @@ let Navigator = {
   inputAnvil,
   inputChat,
 };
-
-export default Navigator;

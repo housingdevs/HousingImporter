@@ -1,9 +1,10 @@
 import menus from '../actions/menus';
-import { addOperation } from '../gui/Queue';
+import { addOperation, setConfig, isWorking } from '../gui/Queue';
 import conditions from '../actions/conditions';
 
-export function loadAction(script) {
-    console.log("AAAAAAAAAAAA")
+export function loadAction(script, config, callback) {
+    if (isWorking()) return callback(false);
+    setConfig(config, callback);
     for (let container in script) {
         if (script[container].context != "DEFAULT") {
             addOperation({ type: 'returnToEditActions' });

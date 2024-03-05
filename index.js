@@ -1,10 +1,10 @@
 /// <reference types="../CTAutocomplete" />
 import { loadAction } from "./importer/loadAction.js";
-import settings from "./gui/settings.js";
 
-export default (script, config) => {
-    if (!config.timeout || !config.useSafeMode) return false;
-    settings.timeout = config.timeout;
-    settings.useSafeMode = config.useSafeMode;
-    loadAction(script);
+export default (script, config, callback) => {
+    if (!config.timeout || !Object.keys(config).includes("useSafeMode")) {
+        callback(false);
+        return;
+    }
+    loadAction(script, config, callback);
 }

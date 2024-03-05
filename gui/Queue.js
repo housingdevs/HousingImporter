@@ -1,5 +1,4 @@
-import Navigator from "./Navigator";
-import Settings from "./settings";
+import Navigator from './Navigator'
 
 const GuiButton = net.minecraft.client.gui.GuiButton;
 class Button {
@@ -49,8 +48,8 @@ let currentGuiContext = null;
 register("tick", () => {
   if (queue.length > 0) timeWithoutOperation++;
   if (
-    (timeWithoutOperation > Settings.timeout) & (queue.length > 0) &&
-    !Settings.useSafeMode && !Navigator.goto
+    (timeWithoutOperation > timeout) & (queue.length > 0) &&
+    !useSafeMode && !Navigator.goto
   ) {
     fails.push(`&cOperation timed out. &f(too long without GUI click)`);
     doneLoading();
@@ -92,6 +91,7 @@ register("tick", () => {
     case "anvil":
       return Navigator.inputAnvil(operation.text);
     case "returnToEditActions":
+      if (!Player.getContainer()) return;
       return Navigator.returnToEditActions();
     case "back":
       return Navigator.goBack();
@@ -102,6 +102,7 @@ register("tick", () => {
     case "item":
       return Navigator.selectItem(operation.item);
     case "closeGui":
+      if (!Player.getContainer()) return;
       return Client.currentGui.close();
     case "goto":
       Navigator.goto = true;
@@ -124,9 +125,10 @@ function doneLoading() {
   queue = [];
   operationTimes = { started: 0, total: 0 };
   if (fails.length > 0) {
-
+    callback(fails);
   } else {
     // done
+    callback(true);
   }
 }
 
@@ -165,6 +167,23 @@ register("guiMouseClick", (x, y) => {
 });
 
 export function addOperation(operation) {
+  if (!Navigator.isWorking) {
+    if (operation.type == "returnToEditActions") return;
+    Navigator.isReady = true;
+  }
   Navigator.isWorking = true;
   queue.push(operation);
+}
+
+let callback;
+let timeout;
+
+export function setConfig(config, callbackFunc) {
+  Navigator.useSafeMode = config.useSafeMode;
+  callback = callbackFunc;
+  timeout = config.timeout;
+}
+
+export function isWorking() {
+  return Navigator.isWorking;
 }
