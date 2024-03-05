@@ -198,11 +198,11 @@ function selectItem(item) {
 register("guiKey", (_character, code, _gui, event) => {
   if (Navigator.goto) return;
   if (!Navigator.isWorking) return;
-  // if (
-  //   code === Keyboard.KEY_ESCAPE ||
-  //   code === Client.getMinecraft().field_71474_y.field_151445_Q.func_151463_i()
-  // )
-  //   cancel(event);
+  if (
+    code === Keyboard.KEY_ESCAPE ||
+    code === Client.getMinecraft().field_71474_y.field_151445_Q.func_151463_i()
+  )
+    cancel(event);
 });
 
 register("packetReceived", (packet, event) => {
