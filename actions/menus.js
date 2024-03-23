@@ -421,7 +421,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",
@@ -446,7 +446,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",
@@ -471,7 +471,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",
@@ -491,7 +491,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",
@@ -511,7 +511,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",
@@ -531,7 +531,7 @@ export default {
         },
         mode: {
             slot: 11,
-            default_value: "INCREMENT",
+            default_value: "SET",
             type: "static_option_select",
             options: [
                 "Increment",

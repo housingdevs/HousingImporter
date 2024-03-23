@@ -46,9 +46,9 @@ export function loadAction(script, config, callback) {
 function importComponent(component, menu) {
     // Go through every setting in the menu
     addOperation({ type: 'setGuiContext', context: component.type });
-    for (let key in component) {
+    for (let key in component) {asd
         if (key == "type") continue;
-        if (JSON.stringify(menu[key].default_value) == JSON.stringify(component[key])) continue;
+        if (JSON.stringify(menu[key].default_value).toLowerCase() == JSON.stringify(component[key]).toLowerCase()) continue;
         if (!component[key]) continue;
         let setting = menu[key];
         addOperation({ type: 'click', slot: setting.slot });
