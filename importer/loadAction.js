@@ -70,7 +70,7 @@ function importComponent(component, menu) {
                 break;
             case "static_option_select":
                 // Static option select is for Hypixel made options, which will be uppercase for the first character
-                addOperation({ type: 'option', option: menu[key].options.find(n => n.toLowerCase() == component[key].replace("_", "").toLowerCase()) });
+                addOperation({ type: 'option', option: menu[key].options.find(n => n.toLowerCase() == component[key].replace("_", " ").toLowerCase()) });
                 break;
             case "dynamic_option_select":
                 addOperation({ type: 'option', option: component[key] });
