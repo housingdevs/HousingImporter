@@ -126,7 +126,7 @@ export default {
         region: {
             slot: 10,
             default_value: null,
-            type: "dyanmic_option_select"
+            type: "dynamic_option_select"
         }
     },
     HAS_ITEM: {

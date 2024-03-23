@@ -11,6 +11,7 @@ function loadItem(itemStack, slot) {
 }
 
 function inputAnvil(input) {
+  slotToClick = 2;
   if (Client.currentGui.getClassName() === 'GuiRepair') { // check if in anvil gui
 		let outputSlotField = Player.getContainer().container.class.getDeclaredField('field_82852_f');
 		outputSlotField.setAccessible(true);
@@ -26,6 +27,7 @@ function inputAnvil(input) {
 
 		Player.getContainer().click(2, false) // click that new item
 	}
+  setNotReady();
 }
 
 function getItemFromNBT(nbtStr) {
@@ -247,12 +249,6 @@ function selectOption(optionName) {
 }
 
 const goBack = () => click(Player.getContainer().getSize() - 5 - 36); // click the back button on all size guis
-
-function inputAnvil(text) {
-  slotToClick = 2;
-  inputAnvil(text, true);
-  setNotReady();
-}
 
 function inputChat(text, func, command) {
   if (text.startsWith("/") && !command) text = "&r" + text;

@@ -65,12 +65,12 @@ export default {
         volume: {
             slot: 11,
             default_value: 0.7,
-            type: "anvil"
+            type: "anvil_input"
         },
         pitch: {
             slot: 12,
             default_value: 1,
-            type: "anvil"
+            type: "anvil_input"
         },
         location: {
             slot: 13,
@@ -152,7 +152,7 @@ export default {
         action_name: "Full Heal"
     },
     SPAWN: {
-        action_name: "Go To House Spawn"
+        action_name: "Go to House Spawn"
     },
     ACTION_BAR: {
         action_name: "Display Action Bar",
@@ -541,5 +541,14 @@ export default {
                 "Divide"
             ]
         }
+    },
+    BALANCE_PLAYER_TEAM: {
+        action_name: "Balance Player Team"
+    },
+    CANCEL_EVENT: {
+        action_name: "Cancel Event"
+    },
+    CONSUME_ITEM: {
+        action_name: "Use/Remove Held Item"
     }
 }
